@@ -1,0 +1,168 @@
+/*-----------------------------------------------------------------------------------
+
+	Template Name: About-Us
+	Template URI: http://www.gishan.com
+	Description: About us information
+	Author: Raisul Islam Gishan
+	Author URI: http://www.raisulislamgishan.com
+	License: GNU General Public License version 3.0
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Version: 1.0
+
+-----------------------------------------------------------------------------------
+
+	1. Header 
+	2. Content
+	  2.1. Form
+	3. Footer
+
+-----------------------------------------------------------------------------------*/
+
+
+
+body, p{
+	margin:0;
+	padding:0;
+	font-family: 'Montserrat', sans-serif;
+}
+/*Header*/
+.head {
+	background-color: #4aa3df;
+}
+.header{
+	padding: 20px 0;
+
+}
+.header .menu {
+	padding-top: 15px;
+}
+.header .menu ul {
+	list-style: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+.header .menu ul li {
+	display: inline-block;
+}
+.header .menu ul li:last-child {
+	border-left: 1px solid#FFF;
+}
+.header .menu ul li:hover a{
+	color:#0065FF;
+}
+.header .menu ul li a {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 500;
+	color:#FFF;
+	padding:15px;
+}
+
+
+/*Content*/
+.contents {
+	overflow: hidden;
+	margin: 50px 0 50px 0;
+}
+
+.contents ul {
+	color: #ccc;
+	font-size: 18px;
+	margin-bottom: 24px;
+	text-align: justify;
+	padding-right: 40px;	
+
+}
+.description {
+	border-right: 1px solid rgb(255, 255, 255);
+}
+.section-bg {
+	overflow: hidden;
+	background: url(images/bg.png);
+}
+.title {
+	color: #ecf0f1;
+	margin-bottom: 24px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.contents p {
+	color: #ccc;
+	font-size: 18px;
+	margin-bottom: 24px;
+	text-align: justify;
+	padding-right: 40px;
+}
+
+.contents .join {
+	font-size: 18px;
+	color: #FFF;
+	border: 1px solid #2980b9;
+	padding: 6px 28px;
+	margin-bottom: 12px;
+	overflow: hidden;
+	display: inline-block;
+	background: #2980b9;
+	border-radius: 5px;
+	text-decoration: none;
+}
+.contents .join:hover {
+	background: #286090;
+}
+
+/*Form*/
+.login-form h2 {
+	color: #FFF;
+	margin-bottom: 24px;
+	font-weight: bold;
+}
+
+.login-form #inputEmail {
+	margin-bottom: 10px;
+}
+.login-form .checkbox{
+	float:left;
+}
+.login-form .checkbox label {
+	color: #FFF;
+}
+.login-form a {
+	float: right;
+	padding: 10px;
+	padding-right: 0;
+}
+
+.new_user {
+	color: #FFF;
+	font-size: 16px;
+	margin-top: 15px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+
+/*Footer*/
+.footer-area {
+	background-color: #2980b9;
+	padding: 25px 0;
+}
+.footer-area p {
+	color: #FFF;
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

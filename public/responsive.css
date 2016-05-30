@@ -1,0 +1,23 @@
+/*Responsive design for displayunder 991px in width*/
+@media all and (max-width: 991px ) {
+
+	.description {
+	border:none;
+	}
+}
+
+
+/*Responsive design for displayunder 770px in width*/
+@media all and (max-width: 770px ) {
+
+	.contents p {
+	padding-right: 0;
+	}
+	.header .menu ul {
+	text-align: center;
+	}
+	.logo {
+	text-align: center;
+}
+
+}
