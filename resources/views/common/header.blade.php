@@ -8,7 +8,12 @@
 				</div>
 				<div class="col-md-4 col-sm-6">
 					<div class="menu">
+
 						<ul>
+							@if(Auth::check())
+								<!-- <li>Welcome {{Auth::user()->name}}</li> -->
+								<li><a href="{{url('/logout')}}">Logout</a></li>
+							@endif
 							<li><a data-toggle="modal" href="#myModal">Contact Us</a></li>
 
 							<li></li>
@@ -36,7 +41,7 @@
 		          <h4 class="modal-title">Contact Us</h4>
 		        </div>
 		        <div class="modal-body">
-
+		        @if(!Auth::check())
 		        <!-- FORM -->
 		          	<form class="form-horizontal" role="form">
 					    <div class="form-group">
@@ -58,7 +63,7 @@
   							</div>
 						</div>
   					</form>
-
+  					@endif
 		        </div>
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>

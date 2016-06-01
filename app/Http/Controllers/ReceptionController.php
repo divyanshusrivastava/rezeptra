@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
-
+use Auth;
+use redirect;
 class ReceptionController extends Controller
 {
     /**
@@ -17,6 +18,10 @@ class ReceptionController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            # code...
+            return "Please login to access";
+        }
         $patients= Patient::all();
         return view('ui.reception.patient')->with('title','New Patient')
         ->with('patient',$patients);
@@ -49,7 +54,7 @@ class ReceptionController extends Controller
         $a->phone= $request->phone;
         $a->referred_by= $request->ref_by;
         $a->save();
-        return redirect::back();
+        return redirect('/register/patient');
     }
 
     /**

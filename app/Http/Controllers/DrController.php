@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
-
+use App\Models\Diag;
 class DrController extends Controller
 {
     /**
@@ -22,69 +22,51 @@ class DrController extends Controller
         ;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function patient(Request $request)
     {
-        //
+       $f_limiter="||";
+       $s_limiter="###";
+       $m="";
+       $len=sizeof($request->med_o);
+       for ($i=0; $i < $len; $i++) { 
+           $temp="";
+           $medo= $request->med_o[$i];
+           $dos= $request->dosage[$i];
+           $dur=$request->dur[$i];
+           $temp=$medo.$f_limiter.$dos.$f_limiter.$dur;
+           $m .= $temp.$s_limiter;
+       }
+        $d= new Diag;
+        $d->user_id=$request->user_id;
+        $d->diagnosis=$request->diag;
+        $d->medicines=$m;
+        $d->save();
+        $p= Patient::find($request->user_id);
+        $p->type="old";
+        $p->save();
+        // return "Test";
+        return redirect('/dr/patient');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function popup($user_id)
     {
-        //
-    }
+        # code...
+        $data=array();
+        $d= Diag::where('user_id',$user_id)->first();
+        // return $d->user_id;
+        $u= Patient::find($d->user_id);
+        $f_e= explode("###",$d->medicines);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        foreach ($f_e as $f) {
+            # code...
+            if (strlen($f)!=0) {
+                # code...
+                         $s_e=explode("||",$f) ;
+           array_push($data,$s_e);
+            }
+         // $temp=array();  
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        }
+        // return $data;
+        return view("ui.doctor.popup")->with('diag',$d)->with('user',$u)->with('data',$data);
     }
 }

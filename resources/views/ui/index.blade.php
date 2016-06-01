@@ -1,5 +1,10 @@
 @extends('common.default')
 @section('content')
+<style type="text/css">
+	.text{
+		color: white;
+	}
+</style>
 <div class="col-md-8 description">
 	<h2 class="title">About Us</h2>
 	<p>Rezeptra is an innovative, future inclined prescription tool for doctors and patients.  </p>
@@ -10,17 +15,20 @@
 		<li>Alerts for medicine, tests, appointments</li>
 		<li>Analytics</li>
 	</ul>
+	@if(!Auth::check())
 	<a class="join" data-toggle="modal" href="#ModalRegister">Join Us</a>
+	@endif
 </div>
 <div class="col-md-4">
 	<div class="form-area">
+	@if(!Auth::check())
 	  
-	      {!! Form::open(array('class'=>'form-signin login-form')) !!}
+	      {!! Form::open(array('url'=>url('auth/login'),'class'=>'form-signin login-form')) !!}
 	        <h2 class="form-signin-heading">Log In</h2>
 	        <label for="inputEmail" class="sr-only">Email address</label>
-	        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+	        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" >
 	        <label for="inputPassword" class="sr-only">Password</label>
-	        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+	        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" >
 	        <div class="checkbox">
 	          <label>
 	            <input type="checkbox" value="remember-me"> Remember me
@@ -30,6 +38,9 @@
 	        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" >
 	      {!! Form::close() !!}
 		  <div class="new_user">Don't have an account? <a data-toggle="modal" href="#ModalRegister">Register Now</a></div>
+		@else
+		<h2 class="text">You are logged in as {{Auth::user()->name}}</h2>
+		@endif
 	  </div>
 
 
