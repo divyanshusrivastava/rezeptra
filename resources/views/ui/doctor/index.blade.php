@@ -23,36 +23,53 @@
 	
 	{!! Form::open(array('class'=>'form','style'=>'display:none;','id'=>'form')) !!}
 	  <div class="form-group">
-    <label for="diag" class="text">Diagnosis</label>
-    <textarea name="diag" class="form-control" id="diag">{{$s->diag or ''}}</textarea>
-  </div>
+    	<label for="diag" class="text">Diagnosis</label>
+    	<textarea name="diag" class="form-control" id="diag">{{$s->diag or ''}}</textarea>
+  	  </div>
+  
   {{-- Medicine --}}
-  <span id="med">
-  <div class="form-group">
-  <label for= "med" class="text">Medicine</label>
-  <select class="form-control" id="m">
-  	<option>Med1</option>
-  	<option>Med2</option>
-  </select>
-  </div>
-  <div class="form-group">
-    <label for= "dosage" class="text">Dosage</label>
-    	<input class="dosage form-control" name="dosage" id="dosage">
-  </div>
-  <div class="form-group">
-  	<label for="dur">Duration</label>
-  	<select class="form-control" name="dur" id="dur">
-  		<option>Daily</option>
-  		<option>Every 4 Hours</option>
-  		<option>Every 8 Hours</option>
-  	</select>
-  </div>
+  	<span id="med">
+
+  		<div class="form-group">
+  			<div class="col-sm-2 label">
+  			<label for= "med" class="text">Type</label>
+  			<select class="form-control" id="m">
+  				<option>Cap</option>
+  				<option>Tab</option>
+  				<option>Syr</option>
+  				<option>Inj</option>
+  				<option>Path</option>
+  				<option>Oth</option>
+  			</select>
+  			</div>
+  		</div>
+  
+  		<div class="form-group">
+  			<div class="col-sm-8 label">
+    		<label for= "dosage" class="text">Name</label>
+    		<input class="dosage form-control" name="dosage" id="dosage">
+  			</div>
+  		</div>
+  
+  		<div class="form-group">
+  			<div class="col-sm-2 label">
+  			<label for="dur">Dosage</label>
+  			<select class="form-control" name="dur" id="dur">
+  				<option>Q1D</option>
+  				<option>BID</option>
+  				<option>QDS</option>
+  				<option>UD</option>
+  			</select>
+  			</div>
+  		</div>
   {{--  --}}
-  <button type="button" class="btn btn-success btn-sm" id="addmore"><span class="glyphicon glyphicon-plus"></span> </button>
   </span>
+
+  <button type="button" class="btn btn-success btn-sm" id="addmore"><span class="glyphicon glyphicon-plus"></span> Add Record</button>
+  
   {{--  --}}
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default pull-right">Submit</button>
 	{!! Form::close() !!}
 </div>
 <div class="col-md-4">
@@ -94,7 +111,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#addmore').click(function(){
-			$('#med').append('<hr><div class="form-group"><label for= "med" class="text">Medicine</label><select class="form-control" id="m"><option>Med1</option><option>Med2</option></select></div><div class="form-group"><label for= "dosage" class="text">Dosage</label><input class="dosage form-control" name="dosage" id="dosage"></div><div class="form-group"><label for="dur">Duration</label><select class="form-control" name="dur" id="dur"><option>Daily</option><option>Every 4 Hours</option><option>Every 8 Hours</option><select></div>'
+			$('#med').append('<div class="form-group"> 			<div class="col-sm-2 label"> 	<select class="form-control" id="m"><option>Cap</option>  				<option>Tab</option>  				<option>Syr</option>  				<option>Inj</option>  				<option>Path</option>  				<option>Oth</option>  			</select>  			</div>  		</div>  		<div class="form-group">  			<div class="col-sm-8 label">    		<input class="dosage form-control" name="dosage" id="dosage">  			</div>  		</div>    		<div class="form-group">  			<div class="col-sm-2 label"><select class="form-control" name="dur" id="dur">  				<option>Q1D</option>  				<option>BID</option> 				<option>QDS</option>  				<option>UD</option>  			</select>  			</div>  		</div>'
 				);
 		});
 	});

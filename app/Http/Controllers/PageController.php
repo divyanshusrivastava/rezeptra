@@ -22,5 +22,6 @@ class PageController extends Controller
   public function loginuser(Request $request)
   {
       # code...
+    
   }
 }
